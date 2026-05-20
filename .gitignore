@@ -1,0 +1,19 @@
+node_modules/
+dist/
+release/
+outputs/
+*.log
+vite.err.log
+
+# Local sibling projects and archives
+sheq-app/
+sheq-app-testing-*/
+sheqbuddy-admin-portal/
+sheqbuddy-api/
+sheqbuddy-website/
+docs/
+scripts/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
