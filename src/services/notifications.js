@@ -143,8 +143,8 @@ export async function notifyDueItems(reminders = [], medications = [], adminRemi
       await registration.showNotification(item.title, {
         body,
         tag: key,
-        icon: "/icons/icon.svg",
-        badge: "/icons/icon.svg"
+        icon: "/sme-accounts/icons/icon.svg",
+        badge: "/sme-accounts/icons/icon.svg"
       });
     } else {
       new Notification(item.title, { body });

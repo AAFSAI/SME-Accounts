@@ -10,17 +10,19 @@ export const seedBusiness = {
   bankName: "Business Everyday",
   bsb: "062-000",
   accountNumber: "1234 5678",
-  invoiceMailbox: "accounts@harbourroad.example",
+  invoiceMailbox: "info@flintzoo.com",
   mailboxProvider: "Microsoft 365",
   accountantName: "Priya Accountant",
-  accountantEmail: "priya@example.com"
+  accountantEmail: "info@flintzoo.com",
+  primaryDomain: "flintzoo.com",
+  hostingProvider: "Hostinger"
 };
 
 export const seedOnboarding = [
   {
     businessName: "Harbour Road Electrical Pty Ltd",
     contactName: "Alex Chen",
-    email: "alex@harbourroad.example",
+    email: "info@flintzoo.com",
     plan: "Essentials",
     status: "Approved",
     paymentStatus: "Paid",
@@ -30,7 +32,7 @@ export const seedOnboarding = [
   {
     businessName: "Garden Studio Co",
     contactName: "Maya Singh",
-    email: "maya@gardenstudio.example",
+    email: "info@flintzoo.com",
     plan: "Quarterly GST",
     status: "Pending review",
     paymentStatus: "Pending",

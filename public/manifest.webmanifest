@@ -1,15 +1,16 @@
 {
   "name": "SME Accounts",
   "short_name": "SME Accounts",
-  "description": "Progressive web accounting package for small businesses, invoice capture, GST, payroll summaries, and reporting.",
-  "start_url": "/",
+  "description": "Flintzoo progressive web accounting package for small businesses, invoice capture, GST, payroll summaries, and reporting.",
+  "start_url": "/sme-accounts/",
+  "scope": "/sme-accounts/",
   "display": "standalone",
   "background_color": "#f5f7f4",
   "theme_color": "#0f766e",
   "orientation": "any",
   "icons": [
     {
-      "src": "/icons/icon.svg",
+      "src": "/sme-accounts/icons/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

@@ -186,6 +186,8 @@ export default function App() {
   const [transactionForm, setTransactionForm] = useState(emptyTransaction);
   const [registrationForm, setRegistrationForm] = useState(emptyRegistration);
   const [emailText, setEmailText] = useState("");
+  const [adminCode, setAdminCode] = useState("");
+  const [isAdminUnlocked, setIsAdminUnlocked] = useState(false);
 
   async function refreshState() {
     setState(await getAccountingState());
@@ -337,6 +339,19 @@ export default function App() {
     await refreshState();
   }
 
+  function handleAdminAccess(event) {
+    event.preventDefault();
+
+    if (adminCode.trim() === "FLINTZOO-ADMIN") {
+      setIsAdminUnlocked(true);
+      setActiveView("admin");
+      setAdminCode("");
+      return;
+    }
+
+    window.alert("Private admin access code is not valid.");
+  }
+
   const pendingInvoices = state.transactions.filter((transaction) => transaction.status !== "Approved").length;
   const pendingOnboarding = state.onboarding.filter((item) => item.status !== "Approved").length;
 
@@ -349,7 +364,9 @@ export default function App() {
           <button onClick={() => setActiveView("accounts")}>Chart</button>
           <button onClick={() => setActiveView("reports")}>Reports</button>
           <button onClick={() => setActiveView("setup")}>Accountant setup</button>
-          <button onClick={() => setActiveView("admin")}>System admin</button>
+          <button onClick={() => setActiveView(isAdminUnlocked ? "admin" : "adminAccess")}>
+            {isAdminUnlocked ? "System admin" : "Private admin"}
+          </button>
         </nav>
         <div className="hero-grid">
           <div>
@@ -612,7 +629,27 @@ export default function App() {
           </Panel>
         ) : null}
 
-        {activeView === "admin" ? (
+        {activeView === "adminAccess" ? (
+          <Panel>
+            <SectionHeading eyebrow="Private access" title="System admin portal" />
+            <form className="form-grid" onSubmit={handleAdminAccess}>
+              <p className="muted">
+                System admin is private for onboarding and payment clearance. Enter the Flintzoo admin
+                access code to continue.
+              </p>
+              <input
+                type="password"
+                placeholder="Admin access code"
+                value={adminCode}
+                onChange={(event) => setAdminCode(event.target.value)}
+                required
+              />
+              <button className="primary-button" type="submit">Unlock system admin</button>
+            </form>
+          </Panel>
+        ) : null}
+
+        {activeView === "admin" && isAdminUnlocked ? (
           <Panel>
             <SectionHeading eyebrow="System admin" title="Customer onboarding and payments" />
             <div className="admin-list">
